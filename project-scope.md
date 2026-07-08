@@ -27,7 +27,7 @@ The feed is a list of objects that look exactly like this:
 
 What each field means and how we handle it:
 
-- `title` — the event name as displayed. Slashes come JSON-escaped (`m\/m`), so we clean those up when parsing. Heads up: ForexFactory sometimes rewords titles over time.
+- `title` — the event name as displayed. Slashes come JSON-escaped (`m/m`), so we clean those up when parsing. Heads up: ForexFactory sometimes rewords titles over time.
 - `country` — actually a currency code. We keep `USD, EUR, GBP, JPY, AUD, NZD, CAD, CHF` and throw away the rest. For those 8, we keep **everything** — storage is basically free, and anything we filter out now can never be recovered later.
 - `date` — a timestamp with a timezone offset (looks like US Eastern). We convert to UTC the moment it comes in and never store local time anywhere.
 - `impact` — one of `High`, `Medium`, `Low`, or `Holiday`. In the first week we'll double-check what holiday/non-economic values actually show up and log anything unexpected.
